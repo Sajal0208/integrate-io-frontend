@@ -1,0 +1,27 @@
+
+.dev_body{
+    padding-top: 15px;
+    min-height: 85vh;
+    background-image: linear-gradient(to right, rgb(243, 198, 142), rgb(255, 178, 85));    
+    display: flex;
+    justify-content: center;
+}
+
+.dev_body_secondary{
+    padding-top: 15px;
+    min-height: 85vh;
+    background-image: linear-gradient(to right, rgb(243, 198, 142), rgb(255, 178, 85));    
+}
+
+.dev_date_picker{
+    display: flex;
+    justify-content: center;    
+    min-height: 85vh;
+    background-color: rgb(243, 198, 142);
+}
+
+.dev_date_picker_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
