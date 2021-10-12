@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div> 
       {/* <Home/> */}
-      <DevDotTo />
-      {/* <CrossPost /> */}
+      {/* <DevDotTo /> */}
+      <CrossPost />
     </div>
   )
 }
