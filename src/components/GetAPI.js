@@ -24,6 +24,7 @@ const GetAPI = () => {
       })
       .then((response) => {
         const post = response.data;
+        console.log(post)
         setPosts(post);
         setIsAPI(true);
       })
@@ -37,7 +38,7 @@ const GetAPI = () => {
     e.preventDefault();
     componentDidMount();
   };
-  const submitButtonHandler = (id, title) => {
+  const submitButtonHandler = (id) => {
     setPostId(id);
     setIsDate(true);
   };
