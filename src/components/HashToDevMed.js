@@ -1,34 +1,34 @@
 import axios from "axios";
 import React, { useState } from "react";
 import styles from "../styles/CrossPost.module.css";
+import Header from "./Header";
 import { Link } from "react-router-dom";
 
-import Header from "./Header";
-
-const DevToMedHashForm = () => {
+const HashToDevMed = () => {
   const [url, setUrl] = useState("");
+  const [dev, setDev] = useState("");
   const [medium, setMedium] = useState("");
-  const [hashNode, setHashNode] = useState("");
   const [isPosted, setIsPosted] = useState(false);
 
   const postHandler = (mediumUserId) => {
     const body = {
-      url: url,
-      medium: true,
-      hash: true,
-      medium_userID: mediumUserId,
-      medium_token: medium,
-      hash_token: hashNode,
+        "url" : url,
+        "dev": true,
+        "medium": true,
+        "dev_api": dev,
+        "medium_id": mediumUserId,
+        "medium_api": medium
     };
 
     axios
-      .post("https://integrate-app-xyz.herokuapp.com/api/v2/dev", body)
+      .post("https://integrate-app-xyz.herokuapp.com/api/v2/hash", body)
       .then((res) => {
         console.log(res);
-        setIsPosted(true);
         setUrl("");
+        setDev("");
         setMedium("");
-        setHashNode("");
+        console.log('heyyyyyyy')
+        setIsPosted(true);
       })
       .catch((err) => {
         console.log(err);
@@ -50,18 +50,7 @@ const DevToMedHashForm = () => {
         alert("Please enter a valid Medium Token Id");
         console.log(err);
       });
-
-    // const body = {
-    //   url: "https://dev.to/ruppysuppy/front-end-developer-roadmap-zero-to-hero-4pkf",
-    //   medium: true,
-    //   hash: true,
-    //   medium_userID:
-    //     "1da14f475be985f113e94785d35c3eab0417e1ef9b95da7dd7b334a1c88bb6066",
-    //   medium_token:
-    //     "29bf43efea57c7c9e9da98a53274f062b0c09b256372c293e0e644808d078665b",
-    //   hash_token: "0398ef26-857d-4b59-b548-f1d2797a9a10",
-    // };
-  };
+    }
 
   return (
     <div>
@@ -88,10 +77,10 @@ const DevToMedHashForm = () => {
                 type="text"
                 id='"form-subscribe-Subscribe'
                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                placeholder="Medium Token Id"
-                value={medium}
+                placeholder="Dev.to Token Id"
+                value={dev}
                 required
-                onChange={(e) => setMedium(e.target.value)}
+                onChange={(e) => setDev(e.target.value)}
               />
             </div>
             <div class=" relative py-1.5">
@@ -99,14 +88,14 @@ const DevToMedHashForm = () => {
                 type="text"
                 id='"form-subscribe-Subscribe'
                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                placeholder="HashNode Token Id"
-                value={hashNode}
+                placeholder="Medium Token Id"
+                value={medium}
                 required
-                onChange={(e) => setHashNode(e.target.value)}
+                onChange={(e) => setMedium(e.target.value)}
               />
             </div>
             <button
-              class="flex-shrink-0 px-4 py-1.5 text-base font-semibold text-white bg-purple rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+              className="flex-shrink-0 px-4 py-1.5 text-base font-semibold text-white bg-purple rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
               type="submit"
             >
               Post
@@ -114,9 +103,9 @@ const DevToMedHashForm = () => {
           </form>
         )}
         {isPosted && (
-          <div style={{ display: 'flex' , flexDirection: 'column',   margin: "30px", fontSize: "22px" , alignContent: 'center' , 'alignItems' : 'center' }}>
+            <div style={{ display: 'flex' , flexDirection: 'column',   margin: "30px", fontSize: "22px" , alignContent: 'center' , 'alignItems' : 'center' }}>
               {" "}
-              <p> Your content has been posted to Medium and HashNode</p>
+              <p> Your content has been posted to Dev.to and Medium</p>
               <Link to = '/'>
                 <button
                   type="button"
@@ -132,4 +121,4 @@ const DevToMedHashForm = () => {
   );
 };
 
-export default DevToMedHashForm;
+export default HashToDevMed;

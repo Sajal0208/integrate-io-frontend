@@ -23,7 +23,7 @@ const DateSelectionPage = ({ postId, apikey }) => {
     };
     console.log(data);
     axios
-      .post("http://localhost:8080/api/v2/schedule", data)
+      .post("https://integrate-app-xyz.herokuapp.com/api/v2/schedule", data)
       .then((res) => {
         console.log(res);
         setPosted(true);

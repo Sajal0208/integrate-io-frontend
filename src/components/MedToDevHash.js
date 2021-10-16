@@ -13,15 +13,15 @@ const MedToDevHash = () => {
   const postHandler = (e) => {
     e.preventDefault();
     const body = {
-      url: "https://medium.com/@amanshri.nitrr/a-job-switch-plan-that-actually-works-e09701c26d88",
-      dev_api: "dev",
+      url: url,
+      dev_api: dev,
       dev: true,
       hash: true,
-      hash_api: "hashNode",
+      hash_api: hashNode,
     };
 
     axios
-      .post("http://localhost:8080/api/v2/medium", body)
+      .post("https://integrate-app-xyz.herokuapp.com/api/v2/medium", body)
       .then((res) => {
         console.log(res);
         setUrl("");
@@ -87,24 +87,18 @@ const MedToDevHash = () => {
           </form>
         )}
         {isPosted && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignContent: "center",
-            }}
-          >
-            <p>Your content has been posted to Dev.to and HashNode</p>
-            <Link to="/">
-              <button
-                type="button"
-                style={{ width: "50%" }}
-                class="py-2 px-4 bg-purple hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-              >
-                Go Back to Home
-              </button>
-            </Link>
-          </div>
+          <div style={{ display: 'flex' , flexDirection: 'column',   margin: "30px", fontSize: "22px" , alignContent: 'center' , 'alignItems' : 'center' }}>
+              {" "}
+              <p> Your content has been posted to Dev.to and HashNode</p>
+              <Link to = '/'>
+                <button
+                  type="button"
+                  className="py-2 px-4 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                >
+                  Go Back to Home
+                </button>
+              </Link>
+            </div>
         )}
       </div>
     </div>
