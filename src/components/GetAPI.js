@@ -5,18 +5,6 @@ import InputAPI from "./InputAPI";
 import RenderPosts from "./RenderPosts";
 
 const initialPosts = [
-  {
-    title: "Using REST API in medium",
-    id: 840092,
-  },
-  {
-    id: 840091,
-    title: "Scripting that medium.com Post",
-  },
-  {
-    id: 828522,
-    title: "Building Backend for a URL Shortening Service | Part-I",
-  },
 ];
 
 const GetAPI = () => {
@@ -36,7 +24,6 @@ const GetAPI = () => {
         },
       })
       .then((response) => {
-        // console.log(response.data)
         const post = response.data;
         setPosts(post);
         setIsAPI(true);
@@ -52,8 +39,6 @@ const GetAPI = () => {
     componentDidMount();
   };
   const submitButtonHandler = (id, title) => {
-    console.log(id);
-    console.log(title);
     setPostId(id);
     setPostTitle(title);
     setIsDate(true);

@@ -7,10 +7,10 @@ const ListedApi = () => {
     <div className={styles.listedapi}>
         <div>
             <p className = {styles.body_title}> Get Started with Our Integrations </p>
-            <ApiBox title = {"Schedule Post on Dev.to"} description = {"Publish your drafted post at your preffered time"} />
-            <ApiBox title = {"Cross Post"} description = {"Publish your blog from one platform to another Medium <--> Dev.to <--> Hashnode"} />
-            <ApiBox title = {"NotionMailer"} description = {"Send Emails using Notion"} />
-            <ApiBox title = {"Discord and Airtable"} description = {"Integrate Discord with Airtable for better community management of your server"} />
+            <ApiBox link = '/dev' title = {"Schedule Post on Dev.to"} description = {"Publish your drafted post at your preffered time"} />
+            <ApiBox link = '/crosspost' title = {"Cross Post"} description = {"Publish your blog from one platform to another Medium <--> Dev.to <--> Hashnode"} />
+            <ApiBox link = '/' title = {"NotionMailer"} description = {"Coming Soon..."} />
+            <ApiBox link = '/' title = {"Discord and Airtable"} description = {"Coming Soon..."} />
         </div>
         <div className = {styles.footer} >
             @2021 Integrate.io
