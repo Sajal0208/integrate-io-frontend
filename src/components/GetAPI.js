@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import DateSelection from "./DateSelection";
 import InputAPI from "./InputAPI";
 import RenderPosts from "./RenderPosts";
@@ -11,7 +11,6 @@ const GetAPI = () => {
   const [isAPI, setIsAPI] = useState(false);
   const [apikey, setApikey] = useState("");
   const [postId, setPostId] = useState();
-  const [postTitle, setPostTitle] = useState("");
   const [isDate, setIsDate] = useState(false);
   const [posts, setPosts] = useState(initialPosts);
 
@@ -40,7 +39,6 @@ const GetAPI = () => {
   };
   const submitButtonHandler = (id, title) => {
     setPostId(id);
-    setPostTitle(title);
     setIsDate(true);
   };
 
