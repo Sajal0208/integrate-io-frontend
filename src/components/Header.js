@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
-import logo from "../assets/images/square_white.png"
+import logo from "../assets/images/final.jpg"
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
     <div className = {styles.header} >
         <div  className = {styles.header_primary}>
             <img className = {styles.logo} src = {logo} alt = "logo"/>
-            <p className = {styles.title}>Integrate.io</p>
+            <p className = {styles.title}>Integrateapp.xyz</p>
         </div>
         <div className = {styles.header_secondary}>
             <Link to = '/' exact className = {styles.header_buttons}>Home</Link>
