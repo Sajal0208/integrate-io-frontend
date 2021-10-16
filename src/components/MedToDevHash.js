@@ -1,66 +1,39 @@
 import axios from "axios";
 import React, { useState } from "react";
 import styles from "../styles/CrossPost.module.css";
+import Header from "./Header";
 import { Link } from "react-router-dom";
 
-import Header from "./Header";
-
-const DevToMedHashForm = () => {
+const MedToDevHash = () => {
   const [url, setUrl] = useState("");
-  const [medium, setMedium] = useState("");
+  const [dev, setDev] = useState("");
   const [hashNode, setHashNode] = useState("");
   const [isPosted, setIsPosted] = useState(false);
 
-  const postHandler = (mediumUserId) => {
+  const postHandler = (e) => {
+    e.preventDefault();
     const body = {
-      url: url,
-      medium: true,
+      url: "https://medium.com/@amanshri.nitrr/a-job-switch-plan-that-actually-works-e09701c26d88",
+      dev_api: "dev",
+      dev: true,
       hash: true,
-      medium_userID: mediumUserId,
-      medium_token: medium,
-      hash_token: hashNode,
+      hash_api: "hashNode",
     };
 
     axios
-      .post("http://localhost:8080/api/v2/dev", body)
+      .post("http://localhost:8080/api/v2/medium", body)
       .then((res) => {
         console.log(res);
-        setIsPosted(true);
         setUrl("");
-        setMedium("");
+        setDev("");
         setHashNode("");
+        console.log('heyyyyyyy')
+        setIsPosted(true);
       })
       .catch((err) => {
         console.log(err);
         alert("Please Enter Valid Details");
       });
-  };
-
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    let mediumUserId;
-    axios
-      .get(`https://api.medium.com/v1/me?accessToken=${medium}`)
-      .then((res) => {
-        mediumUserId = res.data.data.id;
-        console.log(mediumUserId);
-        postHandler(mediumUserId);
-      })
-      .catch((err) => {
-        alert("Please enter a valid Medium Token Id");
-        console.log(err);
-      });
-
-    // const body = {
-    //   url: "https://dev.to/ruppysuppy/front-end-developer-roadmap-zero-to-hero-4pkf",
-    //   medium: true,
-    //   hash: true,
-    //   medium_userID:
-    //     "1da14f475be985f113e94785d35c3eab0417e1ef9b95da7dd7b334a1c88bb6066",
-    //   medium_token:
-    //     "29bf43efea57c7c9e9da98a53274f062b0c09b256372c293e0e644808d078665b",
-    //   hash_token: "0398ef26-857d-4b59-b548-f1d2797a9a10",
-    // };
   };
 
   return (
@@ -69,7 +42,7 @@ const DevToMedHashForm = () => {
       <div className={styles.dev_body}>
         {!isPosted && (
           <form
-            onSubmit={formSubmitHandler}
+            onSubmit={postHandler}
             class="flex flex-col w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center"
           >
             <div class=" relative py-1.5">
@@ -88,10 +61,10 @@ const DevToMedHashForm = () => {
                 type="text"
                 id='"form-subscribe-Subscribe'
                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                placeholder="Medium Token Id"
-                value={medium}
+                placeholder="Dev.to Token Id"
+                value={dev}
                 required
-                onChange={(e) => setMedium(e.target.value)}
+                onChange={(e) => setDev(e.target.value)}
               />
             </div>
             <div class=" relative py-1.5">
@@ -106,7 +79,7 @@ const DevToMedHashForm = () => {
               />
             </div>
             <button
-              class="flex-shrink-0 px-4 py-1.5 text-base font-semibold text-white bg-purple rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+              className="flex-shrink-0 px-4 py-1.5 text-base font-semibold text-white bg-purple rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
               type="submit"
             >
               Post
@@ -121,7 +94,7 @@ const DevToMedHashForm = () => {
               alignContent: "center",
             }}
           >
-            <p>Your content has been posted to Medium and HashNode</p>
+            <p>Your content has been posted to Dev.to and HashNode</p>
             <Link to="/">
               <button
                 type="button"
@@ -138,4 +111,4 @@ const DevToMedHashForm = () => {
   );
 };
 
-export default DevToMedHashForm;
+export default MedToDevHash;

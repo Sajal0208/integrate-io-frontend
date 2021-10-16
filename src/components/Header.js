@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
 import logo from "../assets/images/square_white.png"
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
             <p className = {styles.title}>Integrate.io</p>
         </div>
         <div className = {styles.header_secondary}>
-            <p className = {styles.header_buttons}>Home</p>
+            <Link to = '/' exact className = {styles.header_buttons}>Home</Link>
             <p className = {styles.header_buttons}>About</p>
             <p className = {styles.header_buttons}>Contact</p>
         </div>
