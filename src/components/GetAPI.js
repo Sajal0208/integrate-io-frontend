@@ -16,7 +16,7 @@ const GetAPI = () => {
 
   function componentDidMount() {
     axios
-      .get("https://dev.to/api/articles/me/unpublished", {
+      .get("/articles/me/unpublished", {
         headers: {
           "api-key": apikey,
           "Access-Control-Allow-Origin": "*",

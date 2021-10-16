@@ -2,7 +2,7 @@
   "name": "integrate-io",
   "version": "0.1.0",
   "private": true,
-  // "proxy": "https://dev.to/api",
+  "proxy": "https://dev.to/api",
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@date-io/date-fns": "^2.11.0",
